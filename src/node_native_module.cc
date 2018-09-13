@@ -300,7 +300,8 @@ MaybeLocal<Value> NativeModuleLoader::LookupAndCompile(
     // code path is only run by the tooling that generates the code
     // cache to be bundled in the binary
     // so it should be fine.
-    MallocedBuffer<uint8_t> copied(cached_data->length);
+    MallocedBuffer<uint8_t> copied(cached_data->length,
+                                   isolate->GetArrayBufferAllocator());
     memcpy(copied.data, cached_data->data, cached_data_length);
     Local<ArrayBuffer> buf =
         ArrayBuffer::New(isolate,
