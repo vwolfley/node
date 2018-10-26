@@ -1899,6 +1899,10 @@ MultiIsolatePlatform* GetMainThreadMultiIsolatePlatform() {
   return v8_platform.Platform();
 }
 
+node::tracing::Agent* CreateAgent() {
+  return new node::tracing::Agent();
+}
+
 
 MultiIsolatePlatform* CreatePlatform(
     int thread_pool_size,
